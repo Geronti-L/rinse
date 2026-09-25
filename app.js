@@ -1,7 +1,7 @@
 const PLANS = [
   { id: "day", name: "Day", price: 899, tag: "Coffee runs, groceries, school pickup.", claims: 1, cap: 8000, hours: 72, illness: false, points: ["1 claim every 30 days", "Up to $80 per incident", "Spills, food, and dirt", "Paid within 3 days"] },
-  { id: "night", name: "Night", price: 1499, tag: "The plan most riders actually need.", claims: 2, cap: 15000, hours: 24, illness: true, featured: true, points: ["2 claims every 30 days", "Up to $150 per incident", "Includes illness / biohazard", "Paid within 24 hours"] },
-  { id: "after-hours", name: "After Hours", price: 2499, tag: "Higher caps. Faster money. Two riders.", claims: 4, cap: 25000, hours: 12, illness: true, points: ["4 claims every 30 days", "Up to $250 per incident", "12-hour priority payout", "You plus one named rider"] },
+  { id: "night", name: "Night", price: 1499, tag: "The plan most riders actually need.", claims: 1, cap: 15000, hours: 24, illness: true, featured: true, points: ["1 claim every 30 days", "Up to $150 per incident", "Includes illness / biohazard", "Paid within 24 hours"] },
+  { id: "after-hours", name: "After Hours", price: 2499, tag: "Two claims. Priority payout. Two riders.", claims: 2, cap: 15000, hours: 12, illness: true, points: ["2 claims every 30 days", "Up to $150 per incident", "12-hour priority payout", "You plus one named rider"] },
 ];
 
 const INCIDENTS = [
