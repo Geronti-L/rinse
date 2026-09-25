@@ -171,8 +171,9 @@ function coverage() {
   if (!state.membership) return shell(`<section class="wrap section"><h1>No coverage yet</h1><p><a class="btn" href="#/join">Get covered</a></p></section>`);
   const m = state.membership;
   const plan = planOf(m.planId);
-  const used = m.status === "active" ? usedClaims(state).length : 0;
-  const left = m.status === "active" ? Math.max(0, plan.claims - used) : 0;
+  const rawUsed = m.status === "active" ? usedClaims(state).length : 0;
+  const used = m.status === "active" ? Math.min(rawUsed, plan.claims) : 0;
+  const left = m.status === "active" ? Math.max(0, plan.claims - rawUsed) : 0;
   const paid = state.claims.filter((c) => c.status === "paid").reduce((n, c) => n + c.coveredCents, 0);
   const rows = state.claims.map((c) => `<a class="claim-row" href="#/claims/${esc(c.id)}"><span><b>${esc(LABELS[c.platform])} · ${esc(LABELS[c.incident])}</b><br><span class="fine">${esc(c.city)}</span></span><span>${usd(c.coveredCents || c.amountCents)}<br><span class="badge ${c.status === "denied" ? "bad" : "ok"}">${c.status === "denied" ? "Not covered" : "Paid out"}</span></span></a>`).join("");
   return shell(`
